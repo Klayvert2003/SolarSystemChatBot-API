@@ -12,6 +12,7 @@ class Bot():
     def __init__(self) -> None:
         self.nlp = spacy.load("pt_core_news_md")
         self.API_KEY = getenv('API_KEY')
+        self.base_url = 'http://api.nasa.gov/neo/rest/v1/feed'
         self.planet_distances_from_sun = {
             "mercurio": 57.9,
             "venus": 108.2,
@@ -110,7 +111,7 @@ class Bot():
 
         for date in list_date:
             date = str(date).split()[0]
-            url = f'http://api.nasa.gov/neo/rest/v1/feed?start_date={date}&end_date={date}&detailed=true&api_key={self.API_KEY}'
+            url = f'{self.base_url}?start_date={date}&end_date={date}&detailed=true&api_key={self.API_KEY}'
             asteroid_data = requests.get(url).json()
 
             if date in asteroid_data["near_earth_objects"]:

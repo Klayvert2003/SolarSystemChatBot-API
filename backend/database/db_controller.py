@@ -10,6 +10,7 @@ class SqliteController():
     def return_word_clouds(self):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
+            cursor.execute('CREATE TABLE IF NOT EXISTS wordcloud (word varchar(100));')
             
             results = cursor.execute('SELECT * FROM wordcloud')
             words = []
@@ -23,6 +24,7 @@ class SqliteController():
         try:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
+                cursor.execute('CREATE TABLE IF NOT EXISTS wordcloud (word varchar(100));')
                 if isinstance(words, list):
                     for word in words:
                         cursor.execute(f"INSERT INTO wordcloud VALUES('{word}')")

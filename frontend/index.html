@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Simulador de Chat de Celular</title>
+</head>
+
+<body>
+    <div class="cell-container">
+        <div class="camera"></div>
+        <div class="chat-container">
+            <div class="navbar">
+                <div class="navbar-title"></div>
+                <div class="navbar-buttons">
+                    <button id="danger-button" class="navbar-button">PERIGOS</button>
+                    <button id="wordcloud_button" class="navbar-button">
+                        <a href="http://127.0.0.1:9000/api/generate-word-cloud" target="_blank">NUVEM DE PALAVRAS</a>
+                    </button>
+                </div>
+            </div>
+            
+            
+            <div class="chat-content" id="chat-content">
+                <div class="message assistant">
+                    Olá! Como posso ajudar?
+                    <div id="danger-info" style="display: none;">
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Digite sua mensagem...">
+                <button id="send-button">Enviar</button>
+            </div>
+        </div>
+        <div class="home-button"></div>
+    </div>
+
+    <script src="api.js"></script>
+</body>
+
+</html>

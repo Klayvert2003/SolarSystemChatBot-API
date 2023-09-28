@@ -58,6 +58,27 @@ class Bot():
                 "revolução": "4.331,5 dias terrestres",
                 "diametro": "139.820 km",
                 "satelites": ["io", "europa", "ganimedes", "calisto"]
+            },
+            "saturno": {
+                "desc": "Saturno é conhecido por seus anéis impressionantes.",
+                "rotação": "10,7 horas",
+                "revolução": "10.759 dias terrestres",
+                "diametro": "116.460 km",
+                "satelites": ["titan", "reia", "lapetus", "mimas"]
+            },
+            "urano": {
+                "desc": "Urano é um planeta inclinado que gira de lado.",
+                "rotação": "17,2 horas",
+                "revolução": "30.685 dias terrestres",
+                "diametro": "50.724 km",
+                "satelites": ["titania", "oberon", "umbriel", "ariel"]
+            },
+            "netuno": {
+                "desc": "Netuno é o último planeta do sistema solar.",
+                "rotação": "16,1 horas",
+                "revolução": "60.190 dias terrestres",
+                "diametro": "49.244 km",
+                "satelites": ["tritão", "nereida", "proteus", "larissa"]
             }
         }
         self.satelite_info = {
@@ -67,7 +88,19 @@ class Bot():
             "io": "Io é um dos quatro maiores satélites de Júpiter e é conhecido por sua atividade vulcânica.",
             "europa": "Europa é um dos quatro maiores satélites de Júpiter e é conhecido por ter um oceano subterrâneo.",
             "ganimedes": "Ganimedes é o maior satélite de Júpiter e é maior do que o planeta Mercúrio.",
-            "calisto": "Calisto é um dos quatro maiores satélites de Júpiter e é notável por sua superfície fortemente craterizada."
+            "calisto": "Calisto é um dos quatro maiores satélites de Júpiter e é notável por sua superfície fortemente craterizada.",
+            "titan": "Titan é o maior satélite de Saturno e tem uma atmosfera densa.",
+            "reia": "Reia é o segundo maior satélite de Saturno e possui um grande sistema de anéis.",
+            "lapetus": "Iapetus é um dos satélites de Saturno e tem uma aparência bicolor distinta.",
+            "mimas": "Mimas é um dos menores satélites de Saturno e possui uma grande cratera em forma de olho.",
+            "titania": "Titania é o maior satélite de Urano e possui uma superfície coberta de crateras.",
+            "oberon": "Oberon é o segundo maior satélite de Urano e tem uma aparência escura.",
+            "umbriel": "Umbriel é um dos satélites de Urano e é conhecido por suas crateras e aparência antiga.",
+            "ariel": "Ariel é um dos menores satélites de Urano e possui uma superfície relativamente jovem.",
+            "tritao": "Tritão é o maior satélite de Netuno e é único por orbitar em sentido contrário à rotação de Netuno.",
+            "nereida": "Nereida é um dos satélites de Netuno e tem uma órbita excêntrica e distante.",
+            "proteus": "Proteus é um dos maiores satélites de Netuno e tem uma forma irregular.",
+            "larissa": "Larissa é um dos satélites de Netuno e tem uma órbita próxima ao planeta."
         }
         super().__init__()
 

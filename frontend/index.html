@@ -14,19 +14,20 @@
         <div class="chat-container">
             <div class="navbar">
                 <div class="navbar-title"></div>
+
+            </div>
+
+
+            <div class="chat-content" id="chat-content">
                 <div class="navbar-buttons">
                     <button id="danger-button" class="navbar-button">SATÉLITES PERIGOSOS</button>
                     <button id="wordcloud_button" class="navbar-button">
                         <a href="http://127.0.0.1:9000/api/generate-word-cloud" target="_blank">NUVEM DE PALAVRAS</a>
                     </button>
                 </div>
-            </div>
-            
-            
-            <div class="chat-content" id="chat-content">
-                <div class="message assistant">
-                    Olá! Como posso ajudar?
-                    <div id="danger-info" style="display: none;">
+                <div id="message_controller">
+                    <div class="message assistant">
+                        Olá! Como posso ajudar?
                     </div>
                 </div>
             </div>

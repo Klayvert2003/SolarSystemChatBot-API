@@ -5,17 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const dangerButton = document.getElementById("danger-button");
 
     const date_today = new Date();
-
     const start_date = new Date();
     start_date.setDate(start_date.getDate() - 1);
 
     function formatarData(data) {
         const ano = data.getFullYear();
-        const mes = String(data.getMonth() + 1).padStart(2, '0'); // Adiciona zero à esquerda, se necessário
-        const dia = String(data.getDate()).padStart(2, '0'); // Adiciona zero à esquerda, se necessário
+        const mes = String(data.getMonth() + 1).padStart(2, '0');
+        const dia = String(data.getDate()).padStart(2, '0');
         return `${ano}-${mes}-${dia}`;
     }
-
+    
     dangerButton.addEventListener("click", function () {
         const apiUrl = "http://127.0.0.1:9000/api/verify-danger";
     
@@ -39,26 +38,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 return response.json();
             })
-            .then((data) => {
-                console.log(data);
-
+            .then((data) => {    
                 const response = data.response;
-
+    
                 let infoHtml = '';
-
+                console.log(document.getElementsByClassName("message assistant"))
+    
                 for (let i = 0; i < response.length; i++) {
                     const sateliteName = response[i].satelite_name;
                     const warningMessage = response[i].warning_message;
-
+    
                     infoHtml += `
-                        <div>
-                            <p>Satélite: ${sateliteName}, perigo: ${warningMessage}</p>
-                        </div>
+                        <div class="message assistant">Satélite: ${sateliteName}, perigo: ${warningMessage}</div>
                     `;
                 }
-
-                const dangerInfoContainer = document.getElementById('danger-info');
-                dangerInfoContainer.innerHTML = infoHtml;
+                
+                const dangerInfoContainer = document.querySelector('#message_controller');
+                console.log(dangerInfoContainer);
+                dangerInfoContainer.innerHTML += infoHtml;
                 dangerInfoContainer.style.display = 'block';
             })
             .catch((error) => {
@@ -74,13 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    // Event listener para o botão de envio
     sendButton.addEventListener("click", function () {
         const userMessage = userInput.value;
         if (userMessage.trim() !== "") {
             addMessage(userMessage, "user");
 
-            // Faça a chamada à API local usando fetch
             fetch("http://127.0.0.1:9000/api/chat-bot", {
                 method: "POST",
                 headers: {
@@ -103,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Lidar com a tecla Enter para enviar a mensagem
     userInput.addEventListener("keyup", function (event) {
         if (event.key === "Enter") {
             sendButton.click();

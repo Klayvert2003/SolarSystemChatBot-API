@@ -60,16 +60,21 @@ def generate_word_cloud():
     filtered_words = [token.text for token in doc if not token.is_stop]
     
     filtered_text = ' '.join(filtered_words)
-    wordcloud = WordCloud(width=800, height=600, background_color='white').generate(filtered_text)
 
-    img_buffer = BytesIO()
-    plt.figure(figsize=(8, 4))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis("off")
-    plt.savefig(img_buffer, format='png', bbox_inches='tight', pad_inches=0)
-    img_buffer.seek(0)
+    try:
+        wordcloud = WordCloud(width=800, height=600, background_color='white').generate(filtered_text)
+        
+        img_buffer = BytesIO()
+        plt.figure(figsize=(8, 4))
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis("off")
+        plt.savefig(img_buffer, format='png', bbox_inches='tight', pad_inches=0)
+        img_buffer.seek(0)
 
-    return send_file(img_buffer, mimetype='image/png')
+        return send_file(img_buffer, mimetype='image/png'), 201
+
+    except ValueError:
+        return jsonify({'error': 'words not found'}), 404
 
 if __name__ == "__main__":
     app.run('0.0.0.0', 9000)

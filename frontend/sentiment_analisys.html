@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Solar System ChatBot</title>
+</head>
+
+<body>
+    <div class="cell-container">
+        <div class="camera"></div>
+        <div class="chat-container">
+            <div class="navbar">
+                <div class="navbar-title"></div>
+            </div>
+
+            <div class="chat-content" id="chat-content">
+                <div id="message_controller">
+                    <div class="message assistant">
+                        Olá! Me diga o que você sente sobre explorar planetas.
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Digite sua mensagem...">
+                <button id="send-button">Enviar</button>
+            </div>
+        </div>
+        <div class="home-button"></div>
+    </div>
+
+    <script src="sentiment_api.js"></script>
+</body>
+
+</html>

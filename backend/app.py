@@ -7,12 +7,14 @@ from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 
 from bot import Bot
+from sentiment import SentimentAnalisys
 from database.db_controller import SqliteController
 
 app = Flask(__name__)
 CORS(app)
 bot = Bot()
 db = SqliteController()
+sa = SentimentAnalisys()
 nlp = spacy.load("pt_core_news_md")
 
 @app.post('/api/chat-bot')
@@ -75,6 +77,25 @@ def generate_word_cloud():
 
     except ValueError:
         return jsonify({'error': 'words not found'}), 404
+
+@app.post('/api/sentiment_analisys')
+def sentiment_analisys():
+    data = request.get_json()
+    phrase = data.get('phrase')
+
+    if not phrase:
+        return jsonify({'error': 'User phrase not found'}), 404
+    
+    analisys_message, polaridade, subjetividade = sa.input_phrase(phrase)
+    
+    if (polaridade and subjetividade) < 0.1:
+        return jsonify({'error': 'The inserted sentence was not understood!!!'}), 400
+
+    return jsonify({
+            'analisys_message': analisys_message,
+            'polarity_level': polaridade,
+            'subjectivy': subjetividade
+        })
 
 if __name__ == "__main__":
     app.run('0.0.0.0', 9000)

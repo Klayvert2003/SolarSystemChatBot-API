@@ -87,9 +87,6 @@ def sentiment_analisys():
         return jsonify({'error': 'User phrase not found'}), 404
     
     analisys_message, polaridade, subjetividade = sa.input_phrase(phrase)
-    
-    if (polaridade and subjetividade) < 0.1:
-        return jsonify({'error': 'The inserted sentence was not understood!!!'}), 400
 
     return jsonify({
             'analisys_message': analisys_message,
